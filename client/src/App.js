@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App card card-shadow">
       <ComponentProvider>
-        {/* <Header /> */}
+        <Header />
         {/* <Router>
           <Route path="/" exact component={Components}/>
           <Route path="/add" component={AddComponent}/>
