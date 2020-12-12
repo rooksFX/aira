@@ -2,7 +2,6 @@ let Component = require('../models/Component');
 let _ = require('underscore');
 
 let components = [];
-let componentsSortedByPrice = [];
 let initBudget = 0;
 
 let resolvePromise, rejectPromise;
@@ -11,33 +10,33 @@ exports.generateBuild = async (req, res, next) => {
     initBudget = req.body.budget;
     try {
         components = await Component.find();
-        // testFunction(components);
-        debugger;
-        console.info(`req: `, req.body);
+        // console.info(`req: `, req.body);
 
         components.sort((a, b) => {
             return b.rating - a.rating;
         })
 
-        componentsSortedByPrice = [...components];
-
-        componentsSortedByPrice.sort((a, b) => {
-            return a.price - b.price;
-        })
-
         let finalBuild = await createBuild();
-        console.log('finalBuild: ', finalBuild);
+        // console.log('finalBuild: ', finalBuild);
         return res.status(200).json({
             success: true,
             data: finalBuild
         })
     } catch (error) {
-        console.log('error: ', error);
+        // console.log('error: ', error);
         return res.status(500).json({
             success: false,
             error: 'Server Error'
         })
     }
+}
+
+sortComponents = (componentsToSort, highestFirst = false, sortBy) => {
+    componentsToSort.sort((a, b) => {
+        if (highestFirst) return b[sortBy] - a[sortBy];
+        return a[sortBy] - b[sortBy]
+    });
+    return componentsToSort;
 }
 
 createBuild = () => {
@@ -77,7 +76,7 @@ selectCPU = (filter = {}, cpuBudget) => {
         }
     }
 
-    console.log('CPU filter: ', filter);
+    // console.log('CPU filter: ', filter);
 
     if (!_.isEmpty(filter) && filter.chipset) {
         CPUS =  CPUS.filter(component => filter.chipset !== component.chipset);
@@ -123,7 +122,7 @@ selectGPU = (filter = {}, gpuBudget) => {
 }
 
 selectRAM = (filter = {}, ramBudget) => {
-    console.log(' --------------------------- selectRAM --------------------------- ');
+    console.log('selectRAM');
     let ramError = null;
     let RAMS = components.filter(component => component.type === 'RAM');
     if (!RAMS.length) {
@@ -145,15 +144,18 @@ selectRAM = (filter = {}, ramBudget) => {
             }
         }
     };
-    console.log('RAMS: ', RAMS);
     let RAM = RAMS[0];
     return {RAM, ramError};
 }
 
-selectMOBO = (filter = {}, CPU, RAM, moboBudget) => {
+selectMOBO = (filter = {}, CPU, RAM, moboBudget, highestFirst = false) => {
     console.log('selectMOBO');
     let moboError = null;
-    let MOBOS =  componentsSortedByPrice.filter(component => component.type === 'MOBO');
+    let sortedComponents;
+
+    sortedComponents = sortComponents([...components], highestFirst, 'price');
+
+    let MOBOS =  sortedComponents.filter(component => component.type === 'MOBO');
     if (!MOBOS.length) {
         return {
             MOBO: undefined, 
@@ -163,7 +165,7 @@ selectMOBO = (filter = {}, CPU, RAM, moboBudget) => {
             }
         }
     };
-    console.log('Filter by type:', MOBOS.length);
+    // console.log('Filter by type:', MOBOS.length);
     MOBOS = MOBOS.filter(component => component.price <= moboBudget);
     if (!MOBOS.length) {
         return {
@@ -174,7 +176,7 @@ selectMOBO = (filter = {}, CPU, RAM, moboBudget) => {
             }
         }
     };
-    console.log('Filter by price:', MOBOS.length);
+    // console.log('Filter by price:', MOBOS.length);
     MOBOS = MOBOS.filter(component => component.ramSlots >= RAM.ramSlots);
     if (!MOBOS.length) {
         return {
@@ -185,7 +187,7 @@ selectMOBO = (filter = {}, CPU, RAM, moboBudget) => {
             }
         }
     };
-    console.log('Filter by ramSlots:', MOBOS.length);
+    // console.log('Filter by ramSlots:', MOBOS.length);
     MOBOS = MOBOS.filter(component => CPU.chipset.split(',').includes(component.chipset));
     if (!MOBOS.length) {
         return {
@@ -196,7 +198,7 @@ selectMOBO = (filter = {}, CPU, RAM, moboBudget) => {
             }
         }
     };
-    console.log('Filter by chipset:', MOBOS.length);
+    // console.log('Filter by chipset:', MOBOS.length);
 
     let MOBO = MOBOS[0];
     return {MOBO, moboError};
@@ -218,9 +220,9 @@ filterComponents = (filter = {}) => {
     let ramBudget = (initBudget * 0.10 <= 10000)? initBudget * 0.10: 15000;
     let moboBudget = (initBudget * 0.20 <= 20000)? initBudget * 0.20: 20000;
     
-    let budget = initBudget - (ramBudget + moboBudget);
-    let cpuBudget = budget * 0.35;
-    let gpuBudget = budget * 0.65;
+    let remainingBudget = initBudget - (ramBudget + moboBudget);
+    let cpuBudget = remainingBudget * 0.35;
+    let gpuBudget = remainingBudget * 0.65;
 
     let {CPU, cpuError} = selectCPU(cpuFilter, cpuBudget);
 
@@ -229,7 +231,7 @@ filterComponents = (filter = {}) => {
         return
     }
 
-    console.log('CPU: ', CPU);
+    // console.log('CPU: ', CPU);
 
     let {GPU, gpuError} = selectGPU(gpuFilter, gpuBudget);
 
@@ -247,12 +249,11 @@ filterComponents = (filter = {}) => {
         return
     }
 
-    console.log(' --------------------------- selectRAM --------------------------- ');
-    console.log('RAM: ', RAM);
+    // console.log('RAM: ', RAM);
 
-    let {MOBO, moboError} = selectMOBO(moboFilter, CPU, RAM, moboBudget);
+    let { MOBO, moboError } = selectMOBO(moboFilter, CPU, RAM, moboBudget);
 
-    console.log('MOBO: ', MOBO);
+    // console.log('MOBO: ', MOBO);
 
     if (moboError && moboError.errorCode === 4) {
         if (moboError.errorCode === 4) {
@@ -276,22 +277,35 @@ filterComponents = (filter = {}) => {
     let remaining = initBudget - total;
 
     let secondaryGPU = selectGPU(gpuFilter, GPU.price + remaining).GPU;
+    let newMOBOBudget, newMOBO, newMOBOError;
 
     if (secondaryGPU) {
         total -= GPU.price;
         total += secondaryGPU.price;
+        remaining = initBudget - total;
+        newMOBOBudget = MOBO.price + remaining;
+        ({ MOBO: newMOBO, moboError: newMOBOError } = selectMOBO(moboFilter, CPU, RAM, newMOBOBudget, true));
+        if (newMOBO && !newMOBOError) {
+            console.log('1. total: ', total);
+            total -= MOBO.price;
+            console.log('2. total: ', total);
+            total += newMOBO.price;
+            console.log('3. total: ', total);
+            remaining = initBudget - total;
+        }
     }
-
-    remaining = initBudget - total;
 
     let finalBuild = {
         budget: {
-            cpuBudget, gpuBudget, ramBudget, moboBudget
+            cpuBudget,
+            gpuBudget,
+            ramBudget,
+            moboBudget,
         },
         CPU,
         GPU: secondaryGPU || GPU,
         RAM,
-        MOBO,
+        MOBO: newMOBO || MOBO,
         total,
         remaining,
     };

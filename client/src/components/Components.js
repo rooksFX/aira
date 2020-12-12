@@ -5,7 +5,7 @@ import { ComponentSkeleton } from './ComponentSkeleton';
 import _ from 'underscore';
 
 export const Components = () => {
-    console.log('Render Components');
+    // console.log('Render Components');
     const [tab, setTab] = useState('CPU');
     const [sorting, setSorting] = useState('rating')
     const { components, getComponents, loading } = useContext(ComponentContext);

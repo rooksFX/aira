@@ -24,7 +24,7 @@ export const AddComponent = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log('component', component);
+        // console.log('component', component);
         let id = uniqueId();
         const newComponent = {
             id,
