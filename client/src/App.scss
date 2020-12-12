@@ -29,6 +29,28 @@ a {
   background: #fff;
 }
 
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .App {
+      width: 90vw;
+
+      .delete {
+        flex-grow: 3;
+      }
+
+      .add-components-tabs {
+        overflow: hidden;
+
+        .tabs {
+          overflow-x: scroll;
+          justify-content: flex-start;
+        }
+      }
+    }
+}
+
 .build-form-container, .add-component-layout, .build-results {
   border: 1px solid #ccc;
   padding: 24px;
