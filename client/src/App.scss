@@ -51,7 +51,7 @@ a {
   overflow: hidden;
 
   .tabs {
-    overflow-x: scroll;
+    overflow-x: auto;
     justify-content: flex-start;
   }
 }
