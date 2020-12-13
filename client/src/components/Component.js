@@ -21,7 +21,7 @@ export const Component = ({ component }) => {
             <div className="component-item-details">
                 <div className="detail">Price: {component.price}</div>
                 <div className="detail">Rating: {component.rating}</div>
-                <button className="delete" onClick={() => deleteComponent(component._id)}>DELETE</button>
+                {/* <button className="delete" onClick={() => deleteComponent(component._id)}>DELETE</button> */}
             </div>
         </li>
     )

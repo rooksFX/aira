@@ -24,7 +24,7 @@ function App() {
         <BuildForm />
         <BuildResults />
         <Components />
-        <AddComponent />
+        {/* <AddComponent /> */}
         <Footer />
       </ComponentProvider>
     </div>
