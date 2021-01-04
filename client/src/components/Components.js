@@ -3,17 +3,24 @@ import { Component } from './Component' ;
 import { ComponentContext } from '../context/ComponentState';
 import { ComponentSkeleton } from './ComponentSkeleton';
 import _ from 'underscore';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getComponents } from '../redux/actions/ComponentActions';
 
 export const Components = () => {
     // console.log('Render Components');
     const [tab, setTab] = useState('CPU');
     const [sorting, setSorting] = useState('rating')
-    const { components, getComponents, loading } = useContext(ComponentContext);
+
+    const { components, loading } = useSelector(state => state);
+    const dispatch = useDispatch();
+
+    // const { components, getComponents, loading } = useContext(useSelector.components);
 
     const rdm = Math.ceil(Math.random() * 10);
 
     useEffect(() => {
-        getComponents();
+        dispatch(getComponents());
     }, [])
 
     let selectedComponents = _.filter(components, component => component.type === tab );

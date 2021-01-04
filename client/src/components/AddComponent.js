@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { ComponentContext } from '../context/ComponentState';
+import { addComponent } from '../redux/actions/ComponentActions';
 import uniqueId from 'uniqid';
 
 export const AddComponent = () => {
@@ -20,7 +21,7 @@ export const AddComponent = () => {
     const [type, setType] = useState('CPU')
     const [error, setError] = useState(false)
 
-    const { addComponent } = useContext(ComponentContext);
+    // const { addComponent } = useContext(ComponentContext);
 
     const onSubmit = e => {
         e.preventDefault();

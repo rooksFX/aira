@@ -11,22 +11,26 @@ import { ComponentProvider } from './context/ComponentState';
 
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
+import store from './redux/stores';
+import { Provider } from 'react-redux';
+
 function App() {
   return (
     <div className="App card card-shadow">
-      <ComponentProvider>
+      <Provider store={store}>
         <Header />
-        {/* <Router>
-          <Route path="/" exact component={Components}/>
-          <Route path="/add" component={AddComponent}/>
-          <Route path="/build" component={BuildForm}/>
-        </Router> */}
         <BuildForm />
         <BuildResults />
         <Components />
-        {/* <AddComponent /> */}
         <Footer />
-      </ComponentProvider>
+      </Provider>
+      {/* <ComponentProvider>
+        <Header />
+        <BuildForm />
+        <BuildResults />
+        <Components />
+        <Footer />
+      </ComponentProvider> */}
     </div>
   );
 }
