@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { ComponentContext } from '../context/ComponentState';
 import { addComponent } from '../redux/actions/ComponentActions';
+import { useDispatch } from 'react-redux';
 import uniqueId from 'uniqid';
 
 export const AddComponent = () => {
@@ -20,12 +21,10 @@ export const AddComponent = () => {
     const [component, setComponent] = useState(initComponent);
     const [type, setType] = useState('CPU')
     const [error, setError] = useState(false)
-
-    // const { addComponent } = useContext(ComponentContext);
+    const dispatch = useDispatch();
 
     const onSubmit = e => {
         e.preventDefault();
-        // console.log('component', component);
         let id = uniqueId();
         const newComponent = {
             id,
@@ -34,11 +33,10 @@ export const AddComponent = () => {
         }
         if (isFormValid(newComponent)) {
             setError(false);
-            addComponent(newComponent);
+            dispatch(addComponent(newComponent));
             setComponent(initComponent);
         }
         else {
-            // alert('Form Incomplete!');
             setError(true);
         }
     }

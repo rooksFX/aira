@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getComponents } from '../redux/actions/ComponentActions';
 
 export const Components = () => {
-    // console.log('Render Components');
     const [tab, setTab] = useState('CPU');
     const [sorting, setSorting] = useState('rating')
 

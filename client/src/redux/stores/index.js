@@ -1,3 +1,4 @@
 import ComponentReducer from '../reducers/ComponentReducer';
-import { createStore } from 'redux';
-export default createStore(ComponentReducer);
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+export default createStore(ComponentReducer, applyMiddleware(thunk));
