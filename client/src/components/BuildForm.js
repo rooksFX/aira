@@ -33,7 +33,6 @@ export const BuildForm = () => {
         await axios.post('/api/v1/build', data, config)
         .then(response => {
             setIsLoading(false);
-            // console.log(response);
             const results = response.data.data;
             const { errorCode, errorMessage, budget } = results;
             if (errorCode) {
@@ -41,7 +40,6 @@ export const BuildForm = () => {
                 setBuildResults({});
             }
             else {
-                // console.log('Budget: ', budget);
                 setError('');
                 setBuildResults(results);
             }
@@ -49,7 +47,6 @@ export const BuildForm = () => {
             setIsLoading(false);
             setError("Error building components!");
             setBuildResults({});
-            // console.log(error);
         });
     }
 
