@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import { Home } from './components/Home'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { BuildForm } from './components/BuildForm'
@@ -16,14 +17,15 @@ import { Provider } from 'react-redux';
 
 function App() {
   return (
-    <div className="App card card-shadow">
+    <div className="App">
       <Provider store={store}>
-        <Header />
+        <Home />
+        {/* <Header />
         <BuildForm />
         <BuildResults />
         <Components />
         <AddComponent />
-        <Footer />
+        <Footer /> */}
       </Provider>
       {/* <ComponentProvider>
         <Header />

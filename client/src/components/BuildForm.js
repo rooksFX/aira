@@ -52,7 +52,7 @@ export const BuildForm = () => {
 
     return (
         <>
-            <div className="build-form-container card card-shadow">
+            <div className="build-form-container dark-card">
                 <form onSubmit={onSubmit} id="build-form">
                     <div className="budget-input">
                         <label htmlFor="budget">Budget</label>
@@ -72,12 +72,12 @@ export const BuildForm = () => {
                 </form>
             </div>
             {(error && !isLoading) &&
-                <div className="build-results card card-shadow build-error">
+                <div className="build-results dark-card build-error">
                     <h3>{error}</h3>
                 </div>
             }
             {isLoading &&
-                <div className="build-results card card-shadow">
+                <div className="build-results dark-card">
                     <ul>
                         <ComponentSkeleton />
                         <ComponentSkeleton />
@@ -87,12 +87,12 @@ export const BuildForm = () => {
                 </div>
             }
             {(!_.isEmpty(buildResults) && !isLoading) &&
-            <div className="build-results card card-shadow">
+            <div className="build-results dark-card">
                 <h2>BUILD RESULTS</h2>
                 <ul>
                     <li className="component-item">
                         <div className="component-item-title">
-                            <h3>{buildResults.CPU.model}</h3>
+                            <h3>Processor: {buildResults.CPU.model}</h3>
                         </div>
                         <div className="description">
                             <p>
@@ -100,12 +100,12 @@ export const BuildForm = () => {
                             </p>
                         </div>
                         <div className="component-item-details">
-                            <div className="detail">Price: <b>{buildResults.CPU.price}</b></div>
+                            <div className="detail">Price: <b>PHP {buildResults.CPU.price}</b></div>
                         </div>
                     </li>
                     <li className="component-item">
                         <div className="component-item-title">
-                            <h3>{buildResults.GPU.model}</h3>
+                            <h3>Graphics Card: {buildResults.GPU.model}</h3>
                         </div>
                         <div className="description">
                             <p>
@@ -113,12 +113,12 @@ export const BuildForm = () => {
                             </p>
                         </div>
                         <div className="component-item-details">
-                            <div className="detail">Price: <b>{buildResults.GPU.price}</b></div>
+                            <div className="detail">Price: <b>PHP {buildResults.GPU.price}</b></div>
                         </div>
                     </li>
                     <li className="component-item">
                         <div className="component-item-title">
-                            <h3>{buildResults.RAM.model}</h3>
+                            <h3>Memory: {buildResults.RAM.model}</h3>
                         </div>
                         <div className="description">
                             <p>
@@ -126,12 +126,12 @@ export const BuildForm = () => {
                             </p>
                         </div>
                         <div className="component-item-details">
-                            <div className="detail">Price: <b>{buildResults.RAM.price}</b></div>
+                            <div className="detail">Price: <b>PHP {buildResults.RAM.price}</b></div>
                         </div>
                     </li>
                     <li className="component-item">
                         <div className="component-item-title">
-                            <h3>{buildResults.MOBO.model}</h3>
+                            <h3>Motherboard: {buildResults.MOBO.model}</h3>
                         </div>
                         <div className="description">
                             <p>
@@ -139,7 +139,7 @@ export const BuildForm = () => {
                             </p>
                         </div>
                         <div className="component-item-details">
-                            <div className="detail">Price: <b>{buildResults.MOBO.price}</b></div>
+                            <div className="detail">Price: <b>PHP {buildResults.MOBO.price}</b></div>
                         </div>
                     </li>
                 </ul>

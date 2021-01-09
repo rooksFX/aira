@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #0e0e0e;
 }
 
 header {
@@ -24,27 +24,47 @@ a {
 }
 
 .App {
-  width: 80vw;
-  margin: 25px auto;
-  border: 1px solid #ccc;
-  padding: 24px;
-  background: #fff;
+  color: #fff;
+  // width: 80vw;
+  // margin: 25px auto;
+  // border: 1px solid #ccc;
+  // padding: 24px;
+  // background: #fff;
 
-  @include small {
-    width: 70vw;
-  }
+  // @include small {
+  //   width: 70vw;
+  // }
 
-  @include medium {
-    width: 50vw;
-  }
+  // @include medium {
+  //   width: 50vw;
+  // }
 
-  @include large {
-    width: 40vw;
-  }
+  // @include large {
+  //   width: 40vw;
+  // }
 
-  @include xlarge {
-    width: 30vw;
+  // @include xlarge {
+  //   width: 30vw;
+  // }
+}
+
+.home {
+  width: 100%;
+  min-height: 100vh;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .logo {
+    width: 25vmin;
   }
+}
+
+.build-form-container, .build-results {
+  width: 25vw;
+  margin: 24px 0;
 }
 
 .add-components-tabs {
@@ -56,7 +76,8 @@ a {
   }
 }
 
-.build-form-container, .add-component-layout, .build-results {
+.add-component-layout {
+// .build-form-container, .add-component-layout, .build-results {
   border: 1px solid #ccc;
   padding: 24px;
 }
@@ -90,23 +111,29 @@ input, select {
 button {
   cursor: pointer;
   border-radius: 2.5px;
-  background-color: #ff1648;
+  background-color: $primary-color;
   box-shadow: var(--box-shadow);
-  color: #fff;
+  color: rgb(43, 43, 43);
   border: 0;
   display: block;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   margin: 12px auto;
   padding: 10px;
   width: 90%;
   transition: all 0.3s ease 0s;
+
 }
 
 button:hover {
+  // filter: brightness(120%);
+  // transform: translate(-1px, -3px);
+  box-shadow: 5px 5px 5px #000;
+}
+
+button:active {
   filter: brightness(120%);
-  transform: translateY(-3px);
-  box-shadow: 0px 15px 20px rgba(100, 100, 100, 0.4);
+  outline: none !important;
 }
 
 nav > .tab {
@@ -196,4 +223,15 @@ nav > .tab {
   padding: 10px;
   color: #ff1648;
   text-align: center;
+}
+
+
+
+.dark-card {
+  background: $primary-bg-color;
+  padding: 24px;
+  border-radius: 5px;
+  box-shadow: 5px 5px #000;
+  
+  // border: 1px solid #fff;
 }
