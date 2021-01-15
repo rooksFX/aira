@@ -9,7 +9,7 @@ export const Home = () => {
             <img className="logo" src="../../logo.png" alt=""/>
             <BuildForm />
             <Components />
-            <AddComponent />
+            {/* <AddComponent /> */}
         </div>
     )
 }
