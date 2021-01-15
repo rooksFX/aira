@@ -23,7 +23,9 @@ export const Component = ({ component }) => {
             <div className="component-item-details">
                 <div className="detail">Price: <b>PHP {component.price}</b></div>
                 <div className="detail">Rating: <b>{component.rating}</b></div>
-                <button className="delete" onClick={() => dispatch(deleteComponent(component._id))}>DELETE</button>
+                <div className="delete-btn-container">
+                    <button className="delete" onClick={() => dispatch(deleteComponent(component._id))}>DELETE</button>
+                </div>
             </div>
         </li>
     )

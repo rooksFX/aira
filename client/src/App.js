@@ -10,7 +10,7 @@ import { AddComponent } from './components/AddComponent';
 import { Components } from './components/Components';
 import { ComponentProvider } from './context/ComponentState';
 
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import store from './redux/stores';
 import { Provider } from 'react-redux';
@@ -19,6 +19,12 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path="/">
+            </Route>
+          </Switch>
+        </Router>
         <Home />
         {/* <Header />
         <BuildForm />
@@ -26,6 +32,7 @@ function App() {
         <Components />
         <AddComponent />
         <Footer /> */}
+
       </Provider>
       {/* <ComponentProvider>
         <Header />

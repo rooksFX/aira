@@ -42,6 +42,7 @@ export const BuildForm = () => {
             }
             else {
                 setError('');
+                console.log('results: ', results);
                 setBuildResults(results);
             }
         }, error => {
@@ -72,7 +73,7 @@ export const BuildForm = () => {
                     </div>
                 </form>
             </div>
-            <BuildResults buildResults={ buildResults, error, isLoading }/>
+            <BuildResults buildResults={ buildResults } error={ error } isLoading={ isLoading }/>
 
         </>
     )

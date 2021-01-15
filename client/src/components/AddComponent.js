@@ -111,7 +111,7 @@ export const AddComponent = () => {
 
     return (
         <>
-            <div className="card card-shadow add-component-layout">
+            <div className="dark-card add-component-layout">
                 <form onSubmit={onSubmit} id="build-form">
                     <label htmlFor="type">Component Type</label>
                     <div id="type" className="component-type-selector">

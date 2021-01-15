@@ -40,7 +40,7 @@ export const Components = () => {
     
     return (
         <>
-            <div className="card card-shadow add-component-layout">
+            <div className="dark-card add-component-layout">
                 <div className="add-components-tabs">
                     <div className="tabs">
                         <div className={setClasses("CPU")} id="CPU" onClick={changeView}>CPU</div>
