@@ -63,7 +63,23 @@ a {
 }
 
 .build-form-container, .build-results {
-  width: 25vw;
+  width: 80vw;
+
+  @include small {
+    width: 70vw;
+  }
+
+  @include medium {
+    width: 50vw;
+  }
+
+  @include large {
+    width: 40vw;
+  }
+
+  @include xlarge {
+    width: 30vw;
+  }
 }
 
 .add-components-tabs {
