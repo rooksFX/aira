@@ -13,8 +13,9 @@ export const BuildForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        if (budget <= 5000) {
+        if (budget <= 10000) {
             alert('CONSOLE PEASANT!');
+            setBuildResults({});
         }
         else {
             requestBuild(budget);
@@ -58,7 +59,7 @@ export const BuildForm = () => {
                 <form onSubmit={onSubmit} id="build-form">
                     <div className="budget-input">
                         <label htmlFor="budget">Budget</label>
-                        <input type="text" id="budget" value={budget} onChange={(e) => setBudget(e.target.value)} className="budget"  placeholder="Please enter your budget..."/>
+                        <input type="number" id="budget" value={budget} onChange={(e) => setBudget(e.target.value)} className="budget"  placeholder="Please enter your budget..."/>
                     </div>
                     {/* <div className="build-type">
                         <label htmlFor="build-type">Build Type</label>
