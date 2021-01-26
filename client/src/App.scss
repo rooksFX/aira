@@ -62,7 +62,9 @@ a {
   }
 }
 
-.build-form-container, .build-results {
+.build-form-container,
+.build-results,
+.add-component-layout  {
   width: 80vw;
 
   @include small {
@@ -74,11 +76,11 @@ a {
   }
 
   @include large {
-    width: 40vw;
+    width: 30vw;
   }
 
   @include xlarge {
-    width: 30vw;
+    width: 25vw;
   }
 }
 
@@ -91,12 +93,12 @@ a {
   }
 }
 
-.add-component-layout {
-// .build-form-container, .add-component-layout, .build-results {
-  width: 25vw;
-  // border: 1px solid #ccc;
-  // padding: 24px;
-}
+// .add-component-layout {
+// // .build-form-container, .add-component-layout, .build-results {
+//   width: 25vw;
+//   // border: 1px solid #ccc;
+//   // padding: 24px;
+// }
 
 .card {
   border: 1px solid #ccc;
@@ -121,7 +123,6 @@ input, select {
 
 .button-controls {
   margin-top: 24px;
-  border-top: 1px solid #ccc;
 }
 
 button {

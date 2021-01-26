@@ -8,8 +8,8 @@ export const Home = () => {
         <div className="home">
             <img className="logo" src="../../logo.png" alt=""/>
             <BuildForm />
-            {/* <Components />
-            <AddComponent /> */}
+            <Components />
+            <AddComponent />
         </div>
     )
 }
