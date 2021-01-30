@@ -110,6 +110,11 @@ a {
   @include xlarge {
     width: 25vw;
   }
+
+  .components-list {
+    height: 50vh;
+    overflow-y: auto;
+  }
 }
 
 .add-components-tabs {
