@@ -55,3 +55,10 @@ export const deleteComponent = id => {
         }
     }
 }
+
+export const toggleModal = toggle => {
+    return {
+        type: 'TOGGLE_LOADING',
+        payload: toggle,
+    }
+}

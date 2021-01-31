@@ -5,16 +5,22 @@ import { ComponentSkeleton } from './ComponentSkeleton';
 import _ from 'underscore';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getComponents } from '../redux/actions/ComponentActions';
+import { getComponents, toggleModal } from '../redux/actions/ComponentActions';
+
+import { Modal } from './Modal';
 
 export const Components = () => {
     const [tab, setTab] = useState('CPU');
     const [sorting, setSorting] = useState('rating')
 
-    const { components, loading } = useSelector(state => state);
+    const { components, loading, error, modalOpen } = useSelector(state => state);
     const dispatch = useDispatch();
 
     // const { components, getComponents, loading } = useContext(useSelector.components);
+
+    console.log('components: ', components);
+    console.log('loading: ', loading);
+    console.log('error: ', error);
 
     const rdm = Math.ceil(Math.random() * 10);
 
@@ -82,7 +88,11 @@ export const Components = () => {
                         {selectedComponents.map(component => (<Component key={component._id} component={component} />))}
                     </ul>
                 </div>
+                <button onClick={() => dispatch(toggleModal(!modalOpen))}>ADD COMPONENT</button>
             </div>
+            {(modalOpen &&
+                <Modal />
+            )}
         </>
     )
 }

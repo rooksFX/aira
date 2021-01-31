@@ -1,10 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { ComponentContext } from '../context/ComponentState';
-import { addComponent } from '../redux/actions/ComponentActions';
-import { useDispatch } from 'react-redux';
+import { addComponent, toggleModal } from '../redux/actions/ComponentActions';
+import { useDispatch, useSelector } from 'react-redux';
 import uniqueId from 'uniqid';
+import { IconContext } from "react-icons"
+import { CgCloseO } from "react-icons/cg";
 
 export const AddComponent = () => {
+    const { modalOpen } = useSelector(state => state);
     const initComponent = {
         model: '',
         description: '',
@@ -112,6 +115,21 @@ export const AddComponent = () => {
     return (
         <>
             <div className="dark-card add-component-layout">
+                <div className="close-modal" onClick={(e) => {
+                        e.stopPropagation();
+                        dispatch(toggleModal(false));
+                    }}>
+                    <IconContext.Provider value={{
+                        style: {
+                            fontSize: '30px',
+                            color: '#F652A0',
+                        }
+                    }}>
+                        <div>
+                            <CgCloseO />
+                        </div>
+                    </IconContext.Provider>
+                </div>
                 <form onSubmit={onSubmit} id="build-form">
                     <label htmlFor="type">Component Type</label>
                     <div id="type" className="component-type-selector">

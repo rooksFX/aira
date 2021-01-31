@@ -15,8 +15,8 @@ export const Home = () => {
                 <Switch>
                     <Route exact path="/">
                         <div className='home-buttons'>
-                            <button onClick={() => window.location='/build'}>BUILD</button>
-                            <button onClick={() => window.location='/components'}>MANAGE</button>
+                            <button  className="btn" onClick={() => window.location='/build'}>BUILD</button>
+                            <button  className="btn" onClick={() => window.location='/components'}>MANAGE</button>
                             {/* <Link to='/build'>
                                 <button >BUILD</button>
                             </Link>
@@ -26,13 +26,13 @@ export const Home = () => {
                         </div>
                     </Route>
                     <Route path="/build">
-                        <button className='back-btn' onClick={() => window.location = '/'}>BACK</button>
+                        <button className='btn back-btn' onClick={() => window.location = '/'}>BACK</button>
                         <BuildForm />
                     </Route>
                     <Route path="/components">
-                        <button className='back-btn' onClick={() => window.location = '/'}>BACK</button>
+                        <button className='btn back-btn' onClick={() => window.location = '/'}>BACK</button>
                         <Components />
-                        <AddComponent />
+                        {/* <AddComponent /> */}
                     </Route>
                 </Switch>
             </Router>

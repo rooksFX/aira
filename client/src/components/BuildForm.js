@@ -71,7 +71,7 @@ export const BuildForm = () => {
                         </select>
                     </div> */}
                     <div className="button-controls">
-                        <button>BUILD</button>
+                        <button className="btn">BUILD</button>
                     </div>
                 </form>
             </div>
