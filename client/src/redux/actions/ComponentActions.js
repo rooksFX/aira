@@ -39,6 +39,28 @@ export const addComponent = component => {
     }
 }
 
+export const updateComponent = component => {
+    return async (dispatch) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+        try {
+            const res = await axios.put('/api/v1/components', component, config);
+            dispatch({
+                type: 'UPDATE_COMPONENT',
+                payload: res.data.data
+            });
+        } catch (error) {
+            dispatch({
+                type: 'COMPONENT_ERROR',
+                payload: error.response.data.error
+            });
+        }
+    }
+}
+
 export const deleteComponent = id => {
     return async (dispatch) => {
         try {

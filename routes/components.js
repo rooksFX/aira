@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { getComponents, addComponent, deleteComponent } = require('../controllers/componentsController');
+const { getComponents, addComponent, updateComponent, deleteComponent } = require('../controllers/componentsController');
 
 router
     .route('/')
     .get(getComponents)
-    .post(addComponent);
+    .post(addComponent)
+    .put(updateComponent);
 
 router
     .route('/:id')

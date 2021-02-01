@@ -14,7 +14,6 @@ export const BuildForm = () => {
     const onSubmit = e => {
         e.preventDefault();
         if (budget <= 10000) {
-            // alert('CONSOLE PEASANT!');
             setError('CONSOLE PEASANT!');
             setBuildResults({});
         }

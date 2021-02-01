@@ -48,6 +48,32 @@ exports.addComponent = async (req, res, next) => {
     }
 }
 
+exports.updateComponent = async (req, res, next) => {
+    console.log('updateComponent req: ', req.body);
+    try {
+        const id = req.body._id;
+        // const component = await Component.findById(id);
+        // const component = await Component.findById(id);
+        // const component = await Component.findById(req.params.id);
+        const component = await Component.findByIdAndUpdate(id, req.body, {new: true});
+        console.log('updateComponent component: ', component);
+        if (!component) {
+            return res.status(400).json({
+                success: false,
+                error: 'No matching component found'
+            });
+        }
+        else {
+            return res.status(200).json({
+                success: true,
+                data: component
+            });
+        }
+    } catch (error) {
+        
+    }
+}
+
 exports.deleteComponent = async (req, res, next) => {
     try {
         const component = await Component.findById(req.params.id);

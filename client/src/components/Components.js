@@ -13,14 +13,10 @@ export const Components = () => {
     const [tab, setTab] = useState('CPU');
     const [sorting, setSorting] = useState('rating')
 
-    const { components, loading, error, modalOpen } = useSelector(state => state);
+    const { components, loading, error, modalState } = useSelector(state => state);
     const dispatch = useDispatch();
 
     // const { components, getComponents, loading } = useContext(useSelector.components);
-
-    console.log('components: ', components);
-    console.log('loading: ', loading);
-    console.log('error: ', error);
 
     const rdm = Math.ceil(Math.random() * 10);
 
@@ -88,9 +84,9 @@ export const Components = () => {
                         {selectedComponents.map(component => (<Component key={component._id} component={component} />))}
                     </ul>
                 </div>
-                <button onClick={() => dispatch(toggleModal(!modalOpen))}>ADD COMPONENT</button>
+                <button onClick={() => dispatch(toggleModal({ 'mode': 'add', 'component': null }))}>ADD COMPONENT</button>
             </div>
-            {(modalOpen &&
+            {(modalState.mode === 'add' &&
                 <Modal />
             )}
         </>
