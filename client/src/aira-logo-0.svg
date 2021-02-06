@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="aira-logo" viewBox="0 0 215.88 246.83">
+  <defs>
+    <style>
+      .ab37f2e0-ff4a-4b2c-a198-0c01d66ee091,.ae93cf3e-5782-4d23-9f41-0179358351a7{fill:none}.ab37f2e0-ff4a-4b2c-a198-0c01d66ee091,.ae93cf3e-5782-4d23-9f41-0179358351a7,.b75514fc-a2b0-4a5c-865d-35d7b08ac1d8{stroke:#0ff;stroke-miterlimit:10}.ab37f2e0-ff4a-4b2c-a198-0c01d66ee091{stroke-width:5px}.ae93cf3e-5782-4d23-9f41-0179358351a7{stroke-width:3px}.b75514fc-a2b0-4a5c-865d-35d7b08ac1d8{fill:#0ff}
+    </style>
+  </defs>
+  <path id="b0cd5ad2-a3ca-4f65-911d-97e7ce75d207" d="M107.66 6.8l101.33 58.5v117l-101.33 58.5L6.34 182.3v-117L107.66 6.8" class="outer ab37f2e0-ff4a-4b2c-a198-0c01d66ee091" data-name="Layer 9"/>
+  <path id="bfc5f011-7c6d-4f3c-9d8b-17f90abfd809" d="M208.99 182.3L107.66 6.8 6.34 182.3" class="big-a ab37f2e0-ff4a-4b2c-a198-0c01d66ee091" data-name="Layer 7"/>
+  <path id="afb49be8-276d-4a65-8d4f-97ce44259e36" d="M208.99 65.3L107.66 240.02 6.34 65.3" class="big-v ae93cf3e-5782-4d23-9f41-0179358351a7" data-name="Layer 8"/>
+  <path id="bf415a6b-8e92-4565-ae0d-23c042b75dc3" d="M49.77 107.07l57.89 26.91 57.89-26.91" class="corner ab37f2e0-ff4a-4b2c-a198-0c01d66ee091" data-name="Layer 10"/>
+  <g class="circles" id="a11bda55-6633-4120-bf43-5ff599bf1b08" data-name="Layer 3">
+    <circle cx="107.66" cy="6.8" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+    <circle cx="107.66" cy="132.98" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+    <circle cx="107.66" cy="240.02" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+    <circle cx="50.7" cy="107.07" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+    <circle cx="164.63" cy="107.07" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+    <circle cx="6.8" cy="65.78" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+    <circle cx="209.07" cy="65.78" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+    <circle cx="209.07" cy="182.39" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+    <circle cx="6.8" cy="182.39" r="6.3" class="b75514fc-a2b0-4a5c-865d-35d7b08ac1d8"/>
+  </g>
+</svg>

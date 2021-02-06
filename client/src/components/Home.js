@@ -4,13 +4,15 @@ import { Components } from './Components'
 import { AddComponent } from './AddComponent'
 
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
+import { ReactComponent as AiraLogo } from '../aira-logo-1.svg';
 
 export const Home = () => {
     // const [mode, setMode] = useState('')
 
     return (
         <div className="home">
-            <img className="logo" src="../../logo.png" alt=""/>
+            {/* <img className="logo" src="../../logo.png" alt=""/> */}
+            <AiraLogo />
             <Router>
                 <Switch>
                     <Route exact path="/">

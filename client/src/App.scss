@@ -70,7 +70,7 @@ input {
 .home {
   width: 100%;
   min-height: 100vh;
-  margin: 24px 0;
+  // margin: 24px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,6 +78,66 @@ input {
 
   .logo {
     width: 25vmin;
+
+    // @include medium {
+    //   width: 25vmin;
+    // }
+
+    // @include large {
+    //   width: 25vmin;
+    // }
+
+    // @include xlarge {
+    //   width: 25vmin;
+    // }
+  }
+
+  .aira-logo {
+    width: 45vmin;
+    margin: 24px;
+    animation: logo 1s ease infinite;
+
+    @include small {
+      width: 25vmin;
+    }
+
+    @include medium {
+      width: 20vmin;
+    }
+
+    .path {
+      stroke-dasharray: 900;
+      // animation: dash 2.5s ease alternate infinite both running;
+      animation: path-animation 3s ease infinite;
+    }
+
+    // @keyframes logo {
+    //   0% {
+    //     transform: rotate(0deg);
+    //   }
+
+    //   100% {
+    //     transform: rotate(360deg);
+    //   }
+
+    //   90% {
+    //     transform: rotate(0deg);
+    //   }
+    // }
+
+    @keyframes path-animation {
+      0% {
+        stroke-dashoffset: -900;
+      }
+
+      100% {
+        stroke-dashoffset: 900;
+      }
+
+      50% {
+        stroke-dashoffset: 0;
+      }
+    }
   }
 
   .home-buttons {
