@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { BuildForm } from './BuildForm'
 import { Components } from './Components'
 import { AddComponent } from './AddComponent'
+import GridBackground from './GridBackground'
 
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
 import { ReactComponent as AiraLogo } from '../aira-logo-1.svg';
@@ -11,14 +12,22 @@ export const Home = () => {
 
     return (
         <div className="home">
-            {/* <img className="logo" src="../../logo.png" alt=""/> */}
+            <GridBackground />
             <AiraLogo />
             <Router>
                 <Switch>
                     <Route exact path="/">
                         <div className='home-buttons'>
-                            <button  className="btn" onClick={() => window.location='/build'}>BUILD</button>
-                            <button  className="btn" onClick={() => window.location='/components'}>MANAGE</button>
+                            <div  className="btn glitch" onClick={() => window.location='/build'}>
+                                <div>B U I L D</div>
+                                <div>B U I L D</div>
+                                <div>B U I L D</div>
+                            </div>
+                            <div  className="btn glitch" onClick={() => window.location='/components'}>
+                                <div>MANAGE</div>
+                                <div>MANAGE</div>
+                                <div>MANAGE</div>
+                            </div>
                             {/* <Link to='/build'>
                                 <button >BUILD</button>
                             </Link>

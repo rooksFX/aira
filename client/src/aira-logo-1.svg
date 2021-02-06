@@ -9,14 +9,14 @@
   <path id="a941b07e-d42d-4191-a95b-1be28cf8bce2" d="M208.99 65.3L107.66 240.02 6.34 65.3" class="path b4ba829e-c7d7-489b-a760-92065dbe06ea" data-name="Layer 8"/>
   <path id="a22d5d52-7845-4f93-a6a8-f9ff82ea7712" d="M49.77 107.07l57.89 26.91 57.89-26.91" class="path ae5f9590-0f13-4d98-ac06-a6ac3ca6b17c" data-name="Layer 10"/>
   <g id="be629000-85c9-4791-93f6-f6b425706f6e" data-name="Layer 3">
-    <circle cx="107.66" cy="6.8" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
-    <circle cx="107.66" cy="132.98" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
-    <circle cx="107.66" cy="240.02" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
-    <circle cx="50.7" cy="107.07" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
-    <circle cx="164.63" cy="107.07" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
-    <circle cx="6.8" cy="65.78" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
-    <circle cx="209.07" cy="65.78" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
-    <circle cx="209.07" cy="182.39" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
-    <circle cx="6.8" cy="182.39" r="6.3" class="f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="107.66" cy="6.8" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="107.66" cy="132.98" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="107.66" cy="240.02" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="50.7" cy="107.07" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="164.63" cy="107.07" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="6.8" cy="65.78" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="209.07" cy="65.78" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="209.07" cy="182.39" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
+    <circle cx="6.8" cy="182.39" r="6.3" class="circ f4458334-523e-46b0-a7c9-b797cf5419f2"/>
   </g>
 </svg>
