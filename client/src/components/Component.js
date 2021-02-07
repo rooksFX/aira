@@ -5,6 +5,9 @@ import { deleteComponent, toggleModal } from '../redux/actions/ComponentActions'
 import { IconContext } from "react-icons"
 import { MdDeleteForever, MdModeEdit } from "react-icons/md";
 
+
+import { AddComponent } from './AddComponent';
+
 import { Modal } from './Modal';
 
 export const Component = ({ component }) => {
@@ -63,7 +66,7 @@ export const Component = ({ component }) => {
                 </div>
             </div>
             {(modalState.mode === 'edit' && modalState.component._id === component._id) &&
-                <Modal />
+                <Modal ChildComponent={AddComponent}/>
             }
         </li>
     )

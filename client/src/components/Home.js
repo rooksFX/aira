@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { BuildForm } from './BuildForm'
 import { Components } from './Components'
 import { AddComponent } from './AddComponent'
+import { Modal } from './Modal';
+import Welcome from './Welcome';
 import GridBackground from './GridBackground'
 
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
@@ -9,11 +11,24 @@ import { ReactComponent as AiraLogo } from '../aira-logo-1.svg';
 
 export const Home = () => {
     // const [mode, setMode] = useState('')
+    const welcomeModalState = localStorage.getItem('aira-welcome-dismissed');
+    const [welcomeState, setWelcomeState] = useState(welcomeModalState);
+    console.log('welcomeState: ', welcomeState);
 
     return (
         <div className="home">
             <GridBackground />
-            <AiraLogo />
+            <div className="aira" onMouseOver={() => console.log('HOVER')}>
+                <div className="aira-title">
+                    <div>A I R A</div>
+                    <div>A I R A</div>
+                    <div>A I R A</div>
+                </div>
+                <AiraLogo />
+            </div>
+            {!welcomeState && 
+                <Modal ChildComponent={ Welcome } dismiss={setWelcomeState}/>
+            }
             <Router>
                 <Switch>
                     <Route exact path="/">

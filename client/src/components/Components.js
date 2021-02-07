@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Component } from './Component' ;
+import { AddComponent } from './AddComponent';
 import { ComponentContext } from '../context/ComponentState';
 import { ComponentSkeleton } from './ComponentSkeleton';
 import _ from 'underscore';
@@ -87,7 +88,7 @@ export const Components = () => {
                 <button onClick={() => dispatch(toggleModal({ 'mode': 'add', 'component': null }))}>ADD COMPONENT</button>
             </div>
             {(modalState.mode === 'add' &&
-                <Modal />
+                <Modal ChildComponent={AddComponent}/>
             )}
         </>
     )
