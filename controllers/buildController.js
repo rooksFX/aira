@@ -3,11 +3,19 @@ let _ = require('underscore');
 
 let components = [];
 let initBudget = 0;
+let otherParts = 0;
+let mainComposBudget = 0;
+let originalBudget = 0;
 
 let resolvePromise, rejectPromise;
 
 exports.generateBuild = async (req, res, next) => {
-    initBudget = req.body.budget;
+    originalBudget = req.body.budget;
+    console.log('originalBudget: ', originalBudget);
+    mainComposBudget = originalBudget - (originalBudget * .09);
+    console.log('mainComposBudget: ', mainComposBudget);
+    initBudget = (mainComposBudget <= 10000)? mainComposBudget: originalBudget - 10000;
+    console.log('initBudget: ', initBudget);
     try {
         components = await Component.find();
         // console.info(`req: `, req.body);
@@ -291,7 +299,7 @@ filterComponents = (filter = {}) => {
             console.log('2. total: ', total);
             total += newMOBO.price;
             console.log('3. total: ', total);
-            remaining = initBudget - total;
+            remaining = originalBudget - total;
         }
     }
 
