@@ -11,9 +11,8 @@ import { ReactComponent as AiraLogo } from '../aira-logo-1.svg';
 
 export const Home = () => {
     // const [mode, setMode] = useState('')
-    const welcomeModalState = localStorage.getItem('aira-welcome-dismissed');
+    const welcomeModalState = sessionStorage.getItem('aira-welcome-dismissed');
     const [welcomeState, setWelcomeState] = useState(welcomeModalState);
-    console.log('welcomeState: ', welcomeState);
 
     return (
         <div className="home">

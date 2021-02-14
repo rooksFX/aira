@@ -9,7 +9,6 @@ export default ({ dismiss }) => {
     return (
         <div className='dark-card welcome-modal'>
             <div className="content">
-                <p>
                     Welcome to Aira! Tired of being a Console Peasant
                     and want to join the PCMR but clueless how to build
                     a Gaming Rig?
@@ -45,11 +44,10 @@ export default ({ dismiss }) => {
                             </ul>
                         </span>
                     </h4>
-                </p>
             </div>
             <div>
                 <button className='btn-dismiss'  onClick={() => {
-                    localStorage.setItem('aira-welcome-dismissed', true);
+                    sessionStorage.setItem('aira-welcome-dismissed', true);
                     dismiss(true);
                 }}>
                     Dismiss
