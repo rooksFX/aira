@@ -30,6 +30,8 @@ export default ({ dismiss }) => {
                         <span className="disclaimer error">
                             DISCLAIMER:
                             <ul>
+                                <li>Aira's logic has recently been adjusted to accomodate budget for PSU and HSF.
+                                    Will add the PSU and HSF in the build results these coming weeks.</li>
                                 <li>WIP!!! This project is still WIP and subject to change any time we want.</li>
                                 <li>PSU, HSF, Case, Storage and Case Fans are not yet included in the 
                                     build but will be added later down the road. (Hopefully soon!)
