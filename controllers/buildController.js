@@ -212,6 +212,33 @@ selectMOBO = (filter = {}, CPU, RAM, moboBudget, highestFirst = false) => {
     return {MOBO, moboError};
 }
 
+selectPSU = (filter = {}, psuBudget) => {
+    console.log('selectPSU');
+    let psuError = null;
+    let PSUS = components.filter(component => component.type === 'PSU');
+    if (!PSUS.length) {
+        return {
+            PSU: undefined, 
+            psuError: {
+                errorCode: 1,
+                errorMessage: "Insufficient budget!",
+            }
+        }
+    };
+    PSUS =  PSUS.filter(component => component.price <= psuBudget);
+    if (!PSUS.length) {
+        return {
+            PSU: undefined, 
+            psuError: {
+                errorCode: 2,
+                errorMessage: "No PSU found!",
+            }
+        }
+    };
+    let PSU = PSUS[0];
+    return {PSU, psuError};
+}
+
 resolver = response => {
     resolvePromise(response);
 }
@@ -223,7 +250,7 @@ filterComponents = (filter = {}) => {
 
     // MOBO NOT FOUND WHEN BUDGET IS AROUND 200000
 
-    let { cpuFilter, gpuFilter, ramFilter, moboFilter } = filter;
+    let { cpuFilter, gpuFilter, ramFilter, psuFilter, moboFilter } = filter;
 
     let ramBudget = (initBudget * 0.10 <= 10000)? initBudget * 0.10: 15000;
     let moboBudget = (initBudget * 0.20 <= 20000)? initBudget * 0.20: 20000;
@@ -232,11 +259,14 @@ filterComponents = (filter = {}) => {
     let cpuBudget = remainingBudget * 0.35;
     let gpuBudget = remainingBudget * 0.65;
 
+    let psuBudget;
+    let hsfBudget;
+
     let {CPU, cpuError} = selectCPU(cpuFilter, cpuBudget);
 
     if (cpuError) {
         resolvePromise(cpuError);
-        return
+        return;
     }
 
     // console.log('CPU: ', CPU);
@@ -245,7 +275,7 @@ filterComponents = (filter = {}) => {
 
     if (gpuError) {
         resolvePromise(gpuError);
-        return
+        return;
     }
 
     // console.log('GPU: ', GPU);
@@ -254,7 +284,7 @@ filterComponents = (filter = {}) => {
 
     if (ramError) {
         resolvePromise(ramError);
-        return
+        return;
     }
 
     // console.log('RAM: ', RAM);
@@ -277,7 +307,7 @@ filterComponents = (filter = {}) => {
         }
         else {
             resolvePromise(gpuError);
-            return
+            return;
         }
     }
     
@@ -303,17 +333,31 @@ filterComponents = (filter = {}) => {
         }
     }
 
+    psuBudget = remaining * 0.6;
+
+    let {PSU, psuError} = selectPSU(psuFilter, psuBudget);
+
+    if (psuError) {
+        resolvePromise(psuError);
+        return;
+    }
+
+    total += PSU.price;
+    remaining = originalBudget - total;
+
     let finalBuild = {
         budget: {
             cpuBudget,
             gpuBudget,
             ramBudget,
             moboBudget,
+            psuBudget,
         },
         CPU,
         GPU: secondaryGPU || GPU,
         RAM,
         MOBO: newMOBO || MOBO,
+        PSU,
         total,
         remaining,
     };
