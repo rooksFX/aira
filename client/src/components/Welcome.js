@@ -32,9 +32,6 @@ export default ({ dismiss }) => {
                             <ul>
                                 <li>WIP!!! This project is still WIP and subject to change any time I want.</li>
                                 <li>PSU is now included in the Build while HSF is going to be next.</li>
-                                <li>PSU, HSF, Case, Storage and Case Fans are not yet included in the 
-                                    build but will be added later down the road. (Hopefully soon!)
-                                </li>
                                 <li>Manage Page is planned to have a dedicated site, seperate from Aira
                                     and will require Admin Login.
                                 </li>
