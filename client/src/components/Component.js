@@ -28,6 +28,11 @@ export const Component = ({ component }) => {
                         <b>Chipset: </b> {component.chipset}
                     </p>
                 }
+                {['CPU', 'HSF'].includes(component.type) &&
+                    <p>
+                        <b>Socket: </b> {component.socket}
+                    </p>
+                }
             </div>
             <div className="component-item-details">
                 <div className="detail">Price: <b>PHP {component.price}</b></div>

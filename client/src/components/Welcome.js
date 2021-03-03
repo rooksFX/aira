@@ -31,7 +31,7 @@ export default ({ dismiss }) => {
                             DISCLAIMER:
                             <ul>
                                 <li>WIP!!! This project is still WIP and subject to change any time I want.</li>
-                                <li>PSU is now included in the Build while HSF is going to be next.</li>
+                                <li>PSU and HSF are now included in the Build.</li>
                                 <li>Manage Page is planned to have a dedicated site, seperate from Aira
                                     and will require Admin Login.
                                 </li>

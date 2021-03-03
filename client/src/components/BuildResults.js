@@ -89,6 +89,19 @@ export const BuildResults = ({ buildResults, error, isLoading }) => {
                                 <div className="detail">Price: <b>PHP {buildResults.PSU.price}</b></div>
                             </div>
                         </li>
+                        <li className="component-item">
+                            <div className="component-item-title">
+                                <h3>CPU Cooler: {buildResults.HSF.model}</h3>
+                            </div>
+                            <div className="description">
+                                <p>
+                                    {buildResults.HSF.description}
+                                </p>
+                            </div>
+                            <div className="component-item-details">
+                                <div className="detail">Price: <b>PHP {buildResults.HSF.price}</b></div>
+                            </div>
+                        </li>
                     </ul>
                     <div className="summary">
                         <span>

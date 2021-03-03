@@ -225,6 +225,17 @@ selectPSU = (filter = {}, psuBudget) => {
             }
         }
     };
+    const { GPU } = filter;
+    PSUS =  PSUS.filter(component => component.watts >= GPU.watts);
+    if (!PSUS.length) {
+        return {
+            PSU: undefined, 
+            psuError: {
+                errorCode: 2,
+                errorMessage: "No PSU found!",
+            }
+        }
+    };
     PSUS =  PSUS.filter(component => component.price <= psuBudget);
     if (!PSUS.length) {
         return {
@@ -236,7 +247,56 @@ selectPSU = (filter = {}, psuBudget) => {
         }
     };
     let PSU = PSUS[0];
+
     return {PSU, psuError};
+}
+
+selectHSF = (filter = {}, hsfBudget) => {
+    console.log('selectPSU');
+    let hsfError = null;
+    let HSFS = components.filter(component => component.type === 'HSF');
+    if (!HSFS.length) {
+        return {
+            HSF: undefined, 
+            hsfError: {
+                errorCode: 1,
+                errorMessage: "Insufficient budget!",
+            }
+        }
+    };
+    const { CPU } = filter;
+    HSFS =  HSFS.filter(component => component.tdp >= CPU.tdp);
+    if (!HSFS.length) {
+        return {
+            HSF: undefined, 
+            hsfError: {
+                errorCode: 2,
+                errorMessage: "No HSF found!",
+            }
+        }
+    };
+    // HSFS =  HSFS.filter(component => component.socket.split(',').includes(CPU.socket));
+    // if (!HSFS.length) {
+    //     return {
+    //         HSF: undefined, 
+    //         hsfError: {
+    //             errorCode: 2,
+    //             errorMessage: "No HSF found!",
+    //         }
+    //     }
+    // };
+    HSFS =  HSFS.filter(component => component.price <= hsfBudget);
+    if (!HSFS.length) {
+        return {
+            HSF: undefined, 
+            hsfError: {
+                errorCode: 2,
+                errorMessage: "No HSF found!",
+            }
+        }
+    };
+    let HSF = HSFS[0];
+    return {HSF, hsfError};
 }
 
 resolver = response => {
@@ -250,7 +310,7 @@ filterComponents = (filter = {}) => {
 
     // MOBO NOT FOUND WHEN BUDGET IS AROUND 200000
 
-    let { cpuFilter, gpuFilter, ramFilter, psuFilter, moboFilter } = filter;
+    let { cpuFilter, gpuFilter, ramFilter, psuFilter, moboFilter, hsfFilter } = filter;
 
     let ramBudget = (initBudget * 0.10 <= 10000)? initBudget * 0.10: 15000;
     let moboBudget = (initBudget * 0.20 <= 20000)? initBudget * 0.20: 20000;
@@ -333,7 +393,12 @@ filterComponents = (filter = {}) => {
         }
     }
 
-    psuBudget = remaining * 0.6;
+    psuBudget = remaining * 0.5;
+    hsfBudget = remaining * 0.5;
+
+    psuFilter = {
+        GPU: secondaryGPU || GPU
+    };
 
     let {PSU, psuError} = selectPSU(psuFilter, psuBudget);
 
@@ -345,6 +410,17 @@ filterComponents = (filter = {}) => {
     total += PSU.price;
     remaining = originalBudget - total;
 
+    hsfFilter = { CPU };
+
+    let {HSF, hsfError} = selectHSF(hsfFilter, hsfBudget);
+
+    if (hsfError) {
+        resolvePromise(hsfError);
+        return;
+    }
+    total += HSF.price;
+    remaining = originalBudget - total;
+
     let finalBuild = {
         budget: {
             cpuBudget,
@@ -352,12 +428,14 @@ filterComponents = (filter = {}) => {
             ramBudget,
             moboBudget,
             psuBudget,
+            hsfBudget,
         },
         CPU,
         GPU: secondaryGPU || GPU,
         RAM,
         MOBO: newMOBO || MOBO,
         PSU,
+        HSF,
         total,
         remaining,
     };
